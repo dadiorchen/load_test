@@ -226,6 +226,184 @@ http://127.0.0.1:23101/2/3/2.grid.json  source=console
 ```
 
 
+* Case3 
+
+```
+
+k6> k6 run browser.js
+
+          /\      |‾‾| /‾‾/   /‾‾/
+     /\  /  \     |  |/  /   /  /
+    /  \/    \    |     (   /   ‾‾\
+   /          \   |  |\  \ |  (‾)  |
+  / __________ \  |__| \__\ \_____/ .io
+
+INFO[0000] url to request:
+ http://127.0.0.1:23101/2/0/0.png
+http://127.0.0.1:23101/2/0/1.png
+http://127.0.0.1:23101/2/0/2.png
+http://127.0.0.1:23101/2/1/0.png
+http://127.0.0.1:23101/2/1/1.png
+http://127.0.0.1:23101/2/1/2.png
+http://127.0.0.1:23101/2/2/0.png
+http://127.0.0.1:23101/2/2/1.png
+http://127.0.0.1:23101/2/2/2.png
+http://127.0.0.1:23101/2/3/0.png
+http://127.0.0.1:23101/2/3/1.png
+http://127.0.0.1:23101/2/3/2.png
+http://127.0.0.1:23101/2/0/0.grid.json
+http://127.0.0.1:23101/2/0/1.grid.json
+http://127.0.0.1:23101/2/0/2.grid.json
+http://127.0.0.1:23101/2/1/0.grid.json
+http://127.0.0.1:23101/2/1/1.grid.json
+http://127.0.0.1:23101/2/1/2.grid.json
+http://127.0.0.1:23101/2/2/0.grid.json
+http://127.0.0.1:23101/2/2/1.grid.json
+http://127.0.0.1:23101/2/2/2.grid.json
+http://127.0.0.1:23101/2/3/0.grid.json
+http://127.0.0.1:23101/2/3/1.grid.json
+http://127.0.0.1:23101/2/3/2.grid.json  source=console
+  execution: local
+     script: browser.js
+     output: -
+
+  scenarios: (100.00%) 1 scenario, 1 max VUs, 10m30s max duration (incl. graceful stop):
+           * default: 1 iterations for each of 1 VUs (maxDuration: 10m0s, gracefulStop: 30s)
+
+INFO[0001] url to request:
+ http://127.0.0.1:23101/2/0/0.png
+http://127.0.0.1:23101/2/0/1.png
+http://127.0.0.1:23101/2/0/2.png
+http://127.0.0.1:23101/2/1/0.png
+http://127.0.0.1:23101/2/1/1.png
+http://127.0.0.1:23101/2/1/2.png
+http://127.0.0.1:23101/2/2/0.png
+http://127.0.0.1:23101/2/2/1.png
+http://127.0.0.1:23101/2/2/2.png
+http://127.0.0.1:23101/2/3/0.png
+http://127.0.0.1:23101/2/3/1.png
+http://127.0.0.1:23101/2/3/2.png
+http://127.0.0.1:23101/2/0/0.grid.json
+http://127.0.0.1:23101/2/0/1.grid.json
+http://127.0.0.1:23101/2/0/2.grid.json
+http://127.0.0.1:23101/2/1/0.grid.json
+http://127.0.0.1:23101/2/1/1.grid.json
+http://127.0.0.1:23101/2/1/2.grid.json
+http://127.0.0.1:23101/2/2/0.grid.json
+http://127.0.0.1:23101/2/2/1.grid.json
+http://127.0.0.1:23101/2/2/2.grid.json
+http://127.0.0.1:23101/2/3/0.grid.json
+http://127.0.0.1:23101/2/3/1.grid.json
+http://127.0.0.1:23101/2/3/2.grid.json  source=console
+INFO[0001] url to request:
+ http://127.0.0.1:23101/2/0/0.png
+http://127.0.0.1:23101/2/0/1.png
+http://127.0.0.1:23101/2/0/2.png
+http://127.0.0.1:23101/2/1/0.png
+http://127.0.0.1:23101/2/1/1.png
+http://127.0.0.1:23101/2/1/2.png
+http://127.0.0.1:23101/2/2/0.png
+http://127.0.0.1:23101/2/2/1.png
+http://127.0.0.1:23101/2/2/2.png
+http://127.0.0.1:23101/2/3/0.png
+http://127.0.0.1:23101/2/3/1.png
+http://127.0.0.1:23101/2/3/2.png
+http://127.0.0.1:23101/2/0/0.grid.json
+http://127.0.0.1:23101/2/0/1.grid.json
+http://127.0.0.1:23101/2/0/2.grid.json
+http://127.0.0.1:23101/2/1/0.grid.json
+http://127.0.0.1:23101/2/1/1.grid.json
+http://127.0.0.1:23101/2/1/2.grid.json
+http://127.0.0.1:23101/2/2/0.grid.json
+http://127.0.0.1:23101/2/2/1.grid.json
+http://127.0.0.1:23101/2/2/2.grid.json
+http://127.0.0.1:23101/2/3/0.grid.json
+http://127.0.0.1:23101/2/3/1.grid.json
+http://127.0.0.1:23101/2/3/2.grid.json  source=console
+INFO[0011] url to request:
+ http://127.0.0.1:23101/2/0/0.png
+http://127.0.0.1:23101/2/0/1.png
+http://127.0.0.1:23101/2/0/2.png
+http://127.0.0.1:23101/2/1/0.png
+http://127.0.0.1:23101/2/1/1.png
+http://127.0.0.1:23101/2/1/2.png
+http://127.0.0.1:23101/2/2/0.png
+http://127.0.0.1:23101/2/2/1.png
+http://127.0.0.1:23101/2/2/2.png
+http://127.0.0.1:23101/2/3/0.png
+http://127.0.0.1:23101/2/3/1.png
+http://127.0.0.1:23101/2/3/2.png
+http://127.0.0.1:23101/2/0/0.grid.json
+http://127.0.0.1:23101/2/0/1.grid.json
+http://127.0.0.1:23101/2/0/2.grid.json
+http://127.0.0.1:23101/2/1/0.grid.json
+http://127.0.0.1:23101/2/1/1.grid.json
+http://127.0.0.1:23101/2/1/2.grid.json
+http://127.0.0.1:23101/2/2/0.grid.json
+http://127.0.0.1:23101/2/2/1.grid.json
+http://127.0.0.1:23101/2/2/2.grid.json
+http://127.0.0.1:23101/2/3/0.grid.json
+http://127.0.0.1:23101/2/3/1.grid.json
+http://127.0.0.1:23101/2/3/2.grid.json  source=console
+
+running (00m11.0s), 0/1 VUs, 1 complete and 0 interrupted iterations
+default ✓ [======================================] 1 VUs  00m11.0s/10m0s  1/1 iters, 1 per VU
+INFO[0011] url to request:
+ http://127.0.0.1:23101/2/0/0.png
+http://127.0.0.1:23101/2/0/1.png
+http://127.0.0.1:23101/2/0/2.png
+http://127.0.0.1:23101/2/1/0.png
+http://127.0.0.1:23101/2/1/1.png
+http://127.0.0.1:23101/2/1/2.png
+http://127.0.0.1:23101/2/2/0.png
+http://127.0.0.1:23101/2/2/1.png
+http://127.0.0.1:23101/2/2/2.png
+http://127.0.0.1:23101/2/3/0.png
+http://127.0.0.1:23101/2/3/1.png
+http://127.0.0.1:23101/2/3/2.png
+http://127.0.0.1:23101/2/0/0.grid.json
+http://127.0.0.1:23101/2/0/1.grid.json
+http://127.0.0.1:23101/2/0/2.grid.json
+http://127.0.0.1:23101/2/1/0.grid.json
+http://127.0.0.1:23101/2/1/1.grid.json
+http://127.0.0.1:23101/2/1/2.grid.json
+http://127.0.0.1:23101/2/2/0.grid.json
+http://127.0.0.1:23101/2/2/1.grid.json
+http://127.0.0.1:23101/2/2/2.grid.json
+http://127.0.0.1:23101/2/3/0.grid.json
+http://127.0.0.1:23101/2/3/1.grid.json
+http://127.0.0.1:23101/2/3/2.grid.json  source=console
+
+     ✓ response code was 200
+
+     checks.........................: 100.00% ✓ 24  ✗ 0
+     data_received..................: 74 kB   6.7 kB/s
+     data_sent......................: 2.2 kB  203 B/s
+     http_req_blocked...............: avg=241.41µs min=3µs    med=4µs    max=1.63ms p(90)=757.99µs p(95)=1.18ms
+
+     http_req_connecting............: avg=102.33µs min=0s     med=0s     max=928µs  p(90)=338.59µs p(95)=400.94µ
+s
+     http_req_duration..............: avg=2.48s    min=1.14s  med=2.15s  max=4.95s  p(90)=4.04s    p(95)=4.44s
+
+       { expected_response:true }...: avg=2.48s    min=1.14s  med=2.15s  max=4.95s  p(90)=4.04s    p(95)=4.44s
+
+     http_req_failed................: 0.00%   ✓ 0   ✗ 24
+     http_req_receiving.............: avg=154.95µs min=57µs   med=81.5µs max=1.59ms p(90)=135.29µs p(95)=250.64µ
+s
+     http_req_sending...............: avg=334.54µs min=18µs   med=26µs   max=1.4ms  p(90)=1.3ms    p(95)=1.37ms
+
+     http_req_tls_handshaking.......: avg=0s       min=0s     med=0s     max=0s     p(90)=0s       p(95)=0s
+
+     http_req_waiting...............: avg=2.48s    min=1.14s  med=2.15s  max=4.95s  p(90)=4.04s    p(95)=4.43s
+
+     http_reqs......................: 24      2.189549/s
+     iteration_duration.............: avg=10.95s   min=10.95s med=10.95s max=10.95s p(90)=10.95s   p(95)=10.95s
+
+     iterations.....................: 1       0.091231/s
+     vus............................: 1       min=1 max=1
+     vus_max........................: 1       min=1 max=1
+```     
+
 
 
 
@@ -237,8 +415,88 @@ http://127.0.0.1:23101/2/3/2.grid.json  source=console
 
 Old one:
 ```
+SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","count_text","id","latlon","type","zoom_to" FROM (
+                /* sql case1 */
+          SELECT
+            'cluster' AS type,
+            'case1 with zoom target tile' AS log,
+            cluster_1.id,
+            cluster_1.estimated_geometric_location,
+            cluster_1.latlon,
+            cluster_1.region_type,
+            cluster_1.count,
+            cluster_1.count_text,
+            zoom_target.centroid zoom_to
+          FROM (
+              /* sql case1 tile */
+              SELECT
+              'cluster' AS type,
+              'case1 tile' AS log,
+              NULL AS zoom_to,
+              region_id id,
+              centroid estimated_geometric_location,
+              St_asgeojson(centroid) latlon,
+              type_id as region_type,
+              count(tree_region.id) count,
+              CASE WHEN count(tree_region.id) > 1000
+              THEN  (count(tree_region.id) / 1000) || 'K'
+              ELSE count(tree_region.id) || ''
+              END AS count_text
+              FROM active_tree_region tree_region
+              WHERE zoom_level = 2
+              GROUP BY region_id, centroid, type_id
+          ) cluster_1
+          LEFT JOIN
+          (SELECT
+            DISTINCT ON
+            (region.id) region.id region_id,
+            contained.region_id most_populated_subregion_id,
+            contained.total,
+            contained.zoom_level,
+            ST_ASGeoJson(contained.centroid) centroid
+          FROM
+            (
+            SELECT
+              region_id,
+              zoom_level
+            FROM active_tree_region tree_region
+            WHERE
+              zoom_level = 2
+            GROUP BY
+              region_id,
+              zoom_level ) populated_region
+          JOIN region ON
+            region.id = populated_region.region_id
+          JOIN (
+            SELECT
+              region_id,
+              zoom_level,
+              count(tree_region.id) AS total,
+              centroid
+            FROM active_tree_region tree_region
+            WHERE
+              zoom_level = 4
+            GROUP BY
+              region_id,
+              zoom_level,
+              centroid ) contained ON
+            ST_CONTAINS(region.geom,
+            contained.centroid)
+          WHERE
+            TRUE
+          ORDER BY
+            region.id,
+            total DESC
+          ) zoom_target
+          ON cluster_1.id = zoom_target.region_id
+) as cdbq WHERE "estimated_geometric_location" && ST_MakeEnvelope(-179.9999996159564,47.98992166812654,-54.84375000033869,85.05112874735956,4326)
+
+
+
 
 ```
+
+Result of SQL plan: 15392.927
 
 
 New one:
@@ -324,3 +582,9 @@ SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","count_text",
 ) as cdbq WHERE "estimated_geometric_location" && ST_MakeEnvelope(-179.9999996159564,47.98992166812654,-54.84375000033869,85.05112874735956,4326)
 
 ```
+
+Result: 2305.962
+
+
+
+

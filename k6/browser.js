@@ -31,7 +31,7 @@ export default function () {
     method: "GET",
     url,
   }));
-  const responses = http.batch(requests);
+  const responses = http.batch(requests);//.slice(0,1));
   for(const key in responses){
     check(responses[key], {
       'response code was 200': (res) => res.status == 200,
