@@ -587,4 +587,41 @@ Result: 2305.962
 
 
 
+------------------------
+## Test report
 
+### Dev env, test, Mon Apr 26 11:09:05 CST 2021
+
+#### Env
+
+https://dev.treetracker.org/
+
+Two pods. 
+
+#### Result
+
+* The first page.
+  
+  34.75 s to load the whole page, including 12 tile png, 18 grid.json.
+
+  ![alt text](./1.png)
+
+* The second page, by clicking the cluster and zoom in.
+
+  Estimate 60s to load the whole page, including all tile png + grid.json.
+
+  And NOTE, there are about 30 png/grid.json are canceled but still running on server side, so it would stall the later requests. 
+
+  ![alt text](./2.png)
+  ![alt text](./3.png)
+
+
+#### Analaysis
+
+* The canceled requests would stall the later ones.
+
+* Possible way to optimize: request the tile proactively, like reuqest all those png which would be visited frequently.
+
+* Possible way to optimize: higher concurrent connections to PG DB?
+
+* Possible way to optimize: slow down the frequency of loading tile pictures. But it would impact the speed of web map app, make it less responsive.

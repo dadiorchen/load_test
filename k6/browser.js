@@ -31,6 +31,10 @@ export default function () {
     method: "GET",
     url,
   }));
+  const requests2 = [{
+    method: "GET",
+    url: "http://127.0.0.1:23101/9/258/256.grid.json",
+  }];
   const responses = http.batch(requests);//.slice(0,1));
   for(const key in responses){
     check(responses[key], {
