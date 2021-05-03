@@ -625,3 +625,184 @@ Two pods.
 * Possible way to optimize: higher concurrent connections to PG DB?
 
 * Possible way to optimize: slow down the frequency of loading tile pictures. But it would impact the speed of web map app, make it less responsive.
+
+
+
+----
+### Case at Thu Apr 29 10:29:54 CST 2021
+#### Settings
+zoom level: 2->4
+concurrent user: 1
+
+```
+k6> k6 run browser.js
+
+          /\      |‾‾| /‾‾/   /‾‾/
+     /\  /  \     |  |/  /   /  /
+    /  \/    \    |     (   /   ‾‾\
+   /          \   |  |\  \ |  (‾)  |
+  / __________ \  |__| \__\ \_____/ .io
+
+INFO[0000] %d tile to request... 672                     source=console
+  execution: local
+     script: browser.js
+     output: -
+
+  scenarios: (100.00%) 1 scenario, 1 max VUs, 10m30s max duration (incl. graceful stop):
+           * default: 1 iterations for each of 1 VUs (maxDuration: 10m0s, gracefulStop: 30s)
+
+INFO[0000] %d tile to request... 672                     source=console
+INFO[0000] %d tile to request... 672                     source=console
+INFO[0306] %d tile to request... 672                     source=console
+
+running (05m06.1s), 0/1 VUs, 1 complete and 0 interrupted iterations
+default ✓ [======================================] 1 VUs  05m06.1s/10m0s  1/1 iters, 1 per VU
+INFO[0306] %d tile to request... 672                     source=console
+
+     ✓ response code was 200
+
+     checks.........................: 100.00% ✓ 672 ✗ 0
+     data_received..................: 1.8 MB  5.9 kB/s
+     data_sent......................: 63 kB   205 B/s
+     http_req_blocked...............: avg=11.45µs  min=2µs      med=5µs   max=957µs  p(90)=13µs     p(95)=23.89µ
+s
+     http_req_connecting............: avg=2.76µs   min=0s       med=0s    max=354µs  p(90)=0s       p(95)=0s
+
+     http_req_duration..............: avg=2.72s    min=917.43ms med=2.28s max=19.63s p(90)=4.2s     p(95)=5.56s
+
+       { expected_response:true }...: avg=2.72s    min=917.43ms med=2.28s max=19.63s p(90)=4.2s     p(95)=5.56s
+
+     http_req_failed................: 0.00%   ✓ 0   ✗ 672
+     http_req_receiving.............: avg=125.52µs min=42µs     med=101µs max=2.58ms p(90)=186.79µs p(95)=224µs
+
+     http_req_sending...............: avg=37.49µs  min=11µs     med=24µs  max=1.66ms p(90)=52µs     p(95)=67µs
+
+     http_req_tls_handshaking.......: avg=0s       min=0s       med=0s    max=0s     p(90)=0s       p(95)=0s
+
+     http_req_waiting...............: avg=2.72s    min=917.25ms med=2.28s max=19.63s p(90)=4.2s     p(95)=5.56s
+
+     http_reqs......................: 672     2.195025/s
+     iteration_duration.............: avg=5m6s     min=5m6s     med=5m6s  max=5m6s   p(90)=5m6s     p(95)=5m6s
+
+     iterations.....................: 1       0.003266/s
+     vus............................: 1       min=1 max=1
+     vus_max........................: 1       min=1 max=1
+```
+
+---
+### Case Thu Apr 29 11:14:55 CST 2021
+
+zoom level: 2->4
+
+```
+
+k6> k6 run --vus 10 --duration 600s browser.js
+
+          /\      |‾‾| /‾‾/   /‾‾/
+     /\  /  \     |  |/  /   /  /
+    /  \/    \    |     (   /   ‾‾\
+   /          \   |  |\  \ |  (‾)  |
+  / __________ \  |__| \__\ \_____/ .io
+
+INFO[0000] %d tile to request... 672                     source=console
+  execution: local
+     script: browser.js
+     output: -
+
+  scenarios: (100.00%) 1 scenario, 10 max VUs, 10m30s max duration (incl. graceful stop):
+           * default: 10 looping VUs for 10m0s (gracefulStop: 30s)
+
+INFO[0000] %d tile to request... 672                     source=console
+INFO[0000] %d tile to request... 672                     source=console
+INFO[0000] %d tile to request... 672                     source=console
+INFO[0000] %d tile to request... 672                     source=console
+INFO[0000] %d tile to request... 672                     source=console
+INFO[0000] %d tile to request... 672                     source=console
+INFO[0000] %d tile to request... 672                     source=console
+INFO[0000] %d tile to request... 672                     source=console
+INFO[0000] %d tile to request... 672                     source=console
+INFO[0000] %d tile to request... 672                     source=console
+INFO[0000] %d tile to request... 672                     source=console
+INFO[0630] %d tile to request... 672                     source=console
+
+running (10m30.1s), 00/10 VUs, 0 complete and 10 interrupted iterations
+default ✓ [======================================] 10 VUs  10m0s
+WARN[0630] No script iterations finished, consider making the test duration longer
+INFO[0630] %d tile to request... 672                     source=console
+
+     data_received..................: 1.7 MB 2.8 kB/s
+     data_sent......................: 212 kB 336 B/s
+     http_req_blocked...............: avg=269.54µs min=1µs   med=4µs    max=45.44ms p(90)=7µs    p(95)=14µs
+     http_req_connecting............: avg=258.57µs min=0s    med=0s     max=45.33ms p(90)=0s     p(95)=0s
+     http_req_duration..............: avg=16.19s   min=8.66s med=15.18s max=34.45s  p(90)=19.37s p(95)=24.22s
+       { expected_response:true }...: avg=16.19s   min=8.66s med=15.18s max=34.45s  p(90)=19.37s p(95)=24.22s
+     http_req_failed................: 0.00%  ✓ 0    ✗ 2289
+     http_req_receiving.............: avg=92.48µs  min=24µs  med=81µs   max=2.38ms  p(90)=130µs  p(95)=157µs
+     http_req_sending...............: avg=39.71µs  min=8µs   med=22µs   max=8.53ms  p(90)=41µs   p(95)=58µs
+     http_req_tls_handshaking.......: avg=0s       min=0s    med=0s     max=0s      p(90)=0s     p(95)=0s
+     http_req_waiting...............: avg=16.19s   min=8.66s med=15.18s max=34.45s  p(90)=19.37s p(95)=24.22s
+     http_reqs......................: 2289   3.632969/s
+     vus............................: 10     min=10 max=10
+     vus_max........................: 10     min=10 max=10
+```
+
+---
+### Case Thu Apr 29 14:23:22 CST 2021
+
+zoom level: 2
+
+```
+
+k6> k6 run --vus 10 --duration 600s browser.js
+
+          /\      |‾‾| /‾‾/   /‾‾/
+     /\  /  \     |  |/  /   /  /
+    /  \/    \    |     (   /   ‾‾\
+   /          \   |  |\  \ |  (‾)  |
+  / __________ \  |__| \__\ \_____/ .io
+
+INFO[0000] %d tile to request... 32                      source=console
+  execution: local
+     script: browser.js
+     output: -
+
+  scenarios: (100.00%) 1 scenario, 10 max VUs, 10m30s max duration (incl. graceful stop):
+           * default: 10 looping VUs for 10m0s (gracefulStop: 30s)
+
+INFO[0000] %d tile to request... 32                      source=console
+INFO[0000] %d tile to request... 32                      source=console
+INFO[0000] %d tile to request... 32                      source=console
+INFO[0000] %d tile to request... 32                      source=console
+INFO[0000] %d tile to request... 32                      source=console
+INFO[0000] %d tile to request... 32                      source=console
+INFO[0000] %d tile to request... 32                      source=console
+INFO[0000] %d tile to request... 32                      source=console
+INFO[0000] %d tile to request... 32                      source=console
+INFO[0000] %d tile to request... 32                      source=console
+INFO[0000] %d tile to request... 32                      source=console
+INFO[0630] %d tile to request... 32                      source=console
+
+running (10m30.0s), 00/10 VUs, 30 complete and 10 interrupted iterations
+default ✓ [======================================] 10 VUs  10m0s
+INFO[0630] %d tile to request... 32                      source=console
+
+     ✓ response code was 200
+
+     checks.........................: 100.00% ✓ 960  ✗ 0
+     data_received..................: 3.1 MB  4.9 kB/s
+     data_sent......................: 105 kB  166 B/s
+     http_req_blocked...............: avg=138.21µs min=2µs   med=5µs    max=2.79ms p(90)=403.69µs p(95)=781.79µ
+     http_req_connecting............: avg=116.4µs  min=0s    med=0s     max=2.75ms p(90)=298µs    p(95)=672.04µ
+     http_req_duration..............: avg=31.84s   min=14s   med=28.31s max=59.31s p(90)=48.4s    p(95)=51.08s
+       { expected_response:true }...: avg=31.84s   min=14s   med=28.31s max=59.31s p(90)=48.4s    p(95)=51.08s
+     http_req_failed................: 0.00%   ✓ 0    ✗ 1072
+     http_req_receiving.............: avg=119.8µs  min=30µs  med=98µs   max=2.15ms p(90)=179µs    p(95)=212µs
+     http_req_sending...............: avg=52.86µs  min=9µs   med=26µs   max=788µs  p(90)=91.69µs  p(95)=188.69µ
+     http_req_tls_handshaking.......: avg=0s       min=0s    med=0s     max=0s     p(90)=0s       p(95)=0s
+     http_req_waiting...............: avg=31.84s   min=14s   med=28.31s max=59.31s p(90)=48.39s   p(95)=51.08s
+     http_reqs......................: 1072    1.701553/s
+     iteration_duration.............: avg=3m10s    min=2m49s med=3m10s  max=3m34s  p(90)=3m30s    p(95)=3m31s
+     iterations.....................: 30      0.047618/s
+     vus............................: 10      min=10 max=10
+     vus_max........................: 10      min=10 max=10
+```
