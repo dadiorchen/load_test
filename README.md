@@ -810,8 +810,19 @@ INFO[0630] %d tile to request... 32                      source=console
 ---
 CASE: pg pool load test, against local mac machine, 2 core
 
-case1: pool size 5, file: pg.test.js, took time: 80s  100 sql, avg CPU about 100%
-case2: pool size 30, file: pg.test.js, took time: 91s  100sql, avg CPU about 100%
+case1: 
+  pool size 5, 
+  file: pg.test.js, 
+  took time: 80s  
+  sql: 100, 
+  avg CPU about 100%
+
+case2: 
+  pool size 30, 
+  file: pg.test.js, 
+  took time: 91s  
+  sql: 100, 
+  avg CPU about 100%
 
 Conclusion:
 The test can connect to the DB with the correct number of connection by setting up the pool size.
@@ -856,3 +867,64 @@ Swap: 576M used, 448M free, 3464K cached, 0K in, 0K out
    4938      21       0      21    0B   168K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
    4966       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
 ```
+
+
+
+
+---
+
+## CASE: pg load test (db/pg.test.js) against: dev env
+
+case1: 
+  pool size: 5
+  sql: 100
+  took time: 164s
+
+case2:
+  pool size: 20
+  sql: 100
+  took time: 166s
+
+
+```
+last pid:  5067;  load avg:  0.08,  1.18,  3.87;       up 0+17:49:09                                          22:22:27
+44 processes: 12 other background task(s), 9 idle, 23 active
+CPU states:  0.6% user,  0.0% nice,  1.2% system, 97.5% idle,  0.6% iowait
+Memory: 749M used, 1242M free, 0K shared, 8100K buffers, 550M cached
+Swap: 550M used, 474M free, 7628K cached, 0K in, 0K out
+
+    PID    IOPS   IORPS   IOWPS READS WRITES COMMAND
+3784127       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784126       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784124       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784128       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784129       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784135       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784139       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784133       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784121       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784130       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784123       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784288       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784137       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784138       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784131       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784132       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784134       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784140       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784136       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784125       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3784122       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+3783104       0       0       0    0B     0B WITH lock_activity AS?(?     SELECT pid, count(*) AS lock_count?     FROM
+3784287       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+    807       0       0       0    0B     0B <insufficient privilege>
+1757842       0       0       0    0B     0B SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","count
+3765859       0       0       0    0B     0B SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","count
+3765785       0       0       0    0B     0B SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","count
+ 970558       0       0       0    0B     0B <insufficient privilege>
+    806       0       0       0    0B     0B <insufficient privilege>
+```
+
+![devdb](./6.png)
+
+https://cloud.digitalocean.com/databases/db-postgresql-sfo2-nextgen/insights?dbObjectName=defaultdb&dbObjectType=database&i=d79377&period=hour
