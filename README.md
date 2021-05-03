@@ -806,3 +806,53 @@ INFO[0630] %d tile to request... 32                      source=console
      vus............................: 10      min=10 max=10
      vus_max........................: 10      min=10 max=10
 ```
+
+---
+CASE: pg pool load test, against local mac machine, 2 core
+
+case1: pool size 5, file: pg.test.js, took time: 80s  100 sql, avg CPU about 100%
+case2: pool size 30, file: pg.test.js, took time: 91s  100sql, avg CPU about 100%
+
+Conclusion:
+The test can connect to the DB with the correct number of connection by setting up the pool size.
+The monitor of pg show there are more concurrent/active connection on pg side
+but the performance is almost the same. Seems like the bottleneck is the CPU
+
+```
+last pid:  4989;  load avg:  17.7,  12.6,  7.97;       up 0+17:35:54                                          22:09:15
+48 processes: 5 other background task(s), 2 idle, 41 active
+CPU states: 37.8% user,  0.0% nice, 35.1% system,  0.0% idle, 27.0% iowait
+Memory: 1914M used, 77M free, 0K shared, 1336K buffers, 1169M cached
+Swap: 576M used, 448M free, 3464K cached, 0K in, 0K out
+
+    PID    IOPS   IORPS   IOWPS READS WRITES COMMAND
+   4937       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4943       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4954       5       0       5    0B    42K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4927       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4942       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4946       0       0       0    0B    21K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4957      16       0      16    0B    84K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4932       5       0       5    0B    42K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4950      26       0      26    0B   232K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4947       0       0       0    0B    42K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4967       0       0       0    0B    42K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4949       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4928       5       0       5    0B    84K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4951       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4970      26       0      26    0B   189K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4968       5       0       5    0B    84K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4936       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4952       5       0       5    0B    42K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4971       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4973       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4941       5       0       5    0B    21K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4965       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4955       5       0       5    0B    42K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4935      37       0      37    0B   168K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   2872    1237    1237       0    5B     0B WITH lock_activity AS?(?     SELECT pid, count(*) AS lock_count?     FROM
+   4929       0       0       0    0B    42K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4948       5       0       5    0B    42K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4938      21       0      21    0B   168K ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+   4966       0       0       0    0B     0B ?SELECT ST_AsBinary("estimated_geometric_location") AS geom,"count","coun
+```
